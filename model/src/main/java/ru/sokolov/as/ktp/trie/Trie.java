@@ -55,7 +55,6 @@ public class Trie {
      * @param prefix
      * @return null if no words with this prefix in vocabulary;
      */
-
     public SortedSet<WeightedWord> searchWordsByPrefix(String prefix) {
 
         TrieNode trieNode = root;

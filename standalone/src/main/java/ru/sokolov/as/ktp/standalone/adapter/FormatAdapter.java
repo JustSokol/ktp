@@ -1,6 +1,7 @@
 package ru.sokolov.as.ktp.standalone.adapter;
 
 import ru.sokolov.as.ktp.word.WeightedWord;
+import ru.sokolov.as.ktp.word.WeightedWordUtils;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -22,12 +23,8 @@ public class FormatAdapter {
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
-        int vocabularySize = Integer.parseInt(bufferedReader.readLine());
-        weightedWordList = new ArrayList<>(vocabularySize);
-        for (int i = 0; i < vocabularySize; i++) {
-            String line = bufferedReader.readLine();
-            weightedWordList.add(parseWeightedWordFromLine(line));
-        }
+        weightedWordList = WeightedWordUtils.parseVocabularyFromReader(bufferedReader);
+
         int prefixListSize = Integer.parseInt(bufferedReader.readLine());
         prefixList = new ArrayList<>(prefixListSize);
         for( int i = 0 ; i < prefixListSize; i++){
@@ -36,12 +33,6 @@ public class FormatAdapter {
         }
     }
 
-    public static WeightedWord parseWeightedWordFromLine (String line){
-        int separatorIndex = line.indexOf(" ");
-        String word = line.substring(0, separatorIndex);
-        Integer weight = Integer.parseInt(line.substring(separatorIndex + 1));
-        return new WeightedWord(word,weight);
-    }
 
     public List<WeightedWord> getWeightedWordList() {
         return weightedWordList;

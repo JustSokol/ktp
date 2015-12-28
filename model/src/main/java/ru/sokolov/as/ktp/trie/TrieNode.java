@@ -15,7 +15,7 @@ public class TrieNode {
 
     /**
      * Список слов, префиксом которых является данный нод.
-     * <br> Автоматически происходит сортировка вставкой на основе TreeSet, порядок - по убыванию частоты
+     * <br> Автоматически происходит сортировка вставкой на основе TreeSet, порядок - по убыванию частоты (задано в коде weightedWord.compareTo();)
      */
     private SortedSet<WeightedWord> containedWords = new TreeSet<>();
 

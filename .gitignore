@@ -1,48 +1,20 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+/.idea/workspace.xml
+/.idea/misc.xml
+/.idea/codeStyleSettings.xml
+/.idea/libraries/
+/.idea/artifacts/
+/.idea/jsLinters/
+/.idea/dataSources*
+/.idea/inspectionProfiles/
 
-# Folder config file
-Desktop.ini
+/.idea/dictionaries/*.xml
+/.idea/jsLibraryMappings.xml
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+*/target/**
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-.idea/*
+*.iml
+*.log
+.settings
+.classpath
+.project
+bin

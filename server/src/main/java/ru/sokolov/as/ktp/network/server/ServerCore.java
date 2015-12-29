@@ -40,7 +40,7 @@ public class ServerCore {
                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), protocolCharset));
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), protocolCharset));
                     while (socket.isConnected()) {
-                        String prefix = bufferedReader.readLine();
+                        String prefix = bufferedReader.readLine().substring(4);
                         List<WeightedWord> weightedWords = trie.searchLimitedWordsByPrefix(prefix);
                         for (WeightedWord weightedWord : weightedWords) {
                             bufferedWriter.write(weightedWord.getWord());

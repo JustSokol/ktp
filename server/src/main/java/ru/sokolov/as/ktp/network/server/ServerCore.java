@@ -9,6 +9,8 @@ import java.net.Socket;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by ASokolov on 28.12.2015.
@@ -18,6 +20,8 @@ public class ServerCore {
     private final Trie trie;
     private final int port;
     private final Charset protocolCharset;
+    private ExecutorService executorService;
+
 
     public ServerCore(Trie trie, int port) {
         this(trie, port, StandardCharsets.US_ASCII);
@@ -32,10 +36,12 @@ public class ServerCore {
     public void start() throws IOException {
 
         ServerSocket serverSocket = new ServerSocket(port);
+        executorService = Executors.newCachedThreadPool();
+
 
         while (true) {
             Socket socket = serverSocket.accept();
-            new Thread(() -> {
+            executorService.execute(() -> {
                 try {
                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), protocolCharset));
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), protocolCharset));
@@ -57,7 +63,7 @@ public class ServerCore {
                         e.printStackTrace();
                     }
                 }
-            }).start();
+            });
         }
     }
 

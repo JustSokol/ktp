@@ -49,7 +49,7 @@ public class ServerCore {
                         String prefix = bufferedReader.readLine().substring(4);
                         List<WeightedWord> weightedWords = trie.searchLimitedWordsByPrefix(prefix);
                         for (WeightedWord weightedWord : weightedWords) {
-                            bufferedWriter.write(weightedWord.getWord());
+                            bufferedWriter.write(weightedWord.getWord()+"\n");
                         }
                         bufferedWriter.newLine();
                         bufferedWriter.flush();

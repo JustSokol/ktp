@@ -39,6 +39,7 @@ public class PerformanceTest {
             printClockTime("StreamStandaloneApp - process");
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(System.out);
             outputStreamWriter.write(result);
+            outputStreamWriter.flush();
             long totalWorkTime = printClockTime("Total app work time");
             Assert.assertTrue("Скорость работы приложения на тестовом файле превысила 10с",totalWorkTime < 10_000L);
         }
